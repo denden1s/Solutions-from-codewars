@@ -12,8 +12,12 @@ public class Kata
     if(title.Length == 0)
       return "";
     title = title.ToLower();
-    minorWords = minorWords.ToLower();
-    string[] minors = minorWords.Split(new char[] { ' ' });
+    string[] minors = new string[0];
+    if(minorWords!= null)
+    {
+      minorWords = minorWords.ToLower();
+      minors = minorWords.Split(new char[] { ' ' });
+    }
     string[] words = title.Split(new char[] { ' ' });
     StringBuilder strBuilder = new StringBuilder(words[0]);
     strBuilder[0] = Char.ToUpper(strBuilder[0]);
@@ -22,7 +26,7 @@ public class Kata
     for(int i = 1; i < words.Length; i++)
     {
       containInMinor = false;
-      if(minors.Length != 0)
+      if(minorWords != null)
       {
         for(int q = 0; q < minors.Length; q++)
         {
